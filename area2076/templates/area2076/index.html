@@ -10,7 +10,7 @@
 
     <div class="page-content">
     	<div class="row">
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 		  	<div class="sidebar profile-sidebar">
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
@@ -23,26 +23,12 @@
 						{{ user.first_name }} {{ user.last_name }}
 					</div>
 					<div class="profile-usertitle-job">
-						{{ user.get_role_display  }} - 
-						{{ user.code }}
+						{{ user.get_role_display  }}
 					</div>
-						Date Joined:
 					<div class="profile-usertitle-job">
-						{{ user.date_expire|date:'Y-m-d' }}
-					</div>
-						Date Expiry
-					<div class="profile-usertitle-job">
-						{{ user.date_expire|date:'Y-m-d'  }}
+						{{ user.date_expire|date:'Y-m-d' }} &nbsp-&nbsp {{ user.date_expire|date:'Y-m-d'  }}
 					</div>
 				</div>
-				<!-- END SIDEBAR USER TITLE -->
-				<!-- SIDEBAR BUTTONS -->
-				<!-- <div class="profile-userbuttons">
-					<button type="button" class="btn btn-success btn-sm">Follow</button>
-					<button type="button" class="btn btn-danger btn-sm">Message</button>
-				</div> -->
-				<!-- END SIDEBAR BUTTONS -->
-				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu">
 					<ul class="nav">
 						<li class="active" id="dashboard-nav">
@@ -91,8 +77,37 @@
                 </ul>
             </div> -->
 		  </div>
-		  <div class="col-md-9">
+		  <div class="col-md-10">
 		  	<!-- Dashboard -->
+		  	<div id="dashboard" style="display: block;">
+		  		<div id="carouselHeader" class="carousel slide" data-ride="carousel">
+				  <ol class="carousel-indicators">
+				    <li data-target="#carouselHeader" data-slide-to="0" class="active"></li>
+				    <li data-target="#carouselHeader" data-slide-to="1"></li>
+				    <li data-target="#carouselHeader" data-slide-to="2"></li>
+				  </ol>
+				  <div class="carousel-inner">
+				    <div class="item active">
+				      <img class="d-block w-100" src="{% static "/images/banner-01.jpg" %}" alt="First slide" >
+				    </div>
+				    <div class="item">
+				      <img class="d-block w-100" src="{% static "/images/banner-02.jpg" %}" alt="Second slide" >
+				    </div>
+				    <div class="item">
+				      <img class="d-block w-100" src="{% static "/images/banner-03.jpg" %}" alt="Third slide" >
+				    </div>
+				  </div>
+				  <a class="carousel-control-prev" href="#carouselHeader" role="button" data-slide="prev">
+				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				  </a>
+				  <a class="carousel-control-next" href="#carouselHeader" role="button" data-slide="next">
+				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+				</div>
+		  	</div>
+
 		  	<div id="report" style="display: none;">
 		  		<div class="row">
 			  		<div class="table-wrapper">

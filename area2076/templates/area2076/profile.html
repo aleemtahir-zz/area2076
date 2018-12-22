@@ -10,7 +10,7 @@
 
     <div class="page-content">
     	<div class="row">
-		  <div class="col-md-3">
+		  <div class="col-md-2">
 		  	<div class="sidebar profile-sidebar">
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
@@ -26,13 +26,11 @@
 						{{ user.get_role_display  }} - 
 						{{ user.code }}
 					</div>
-						Date Joined:
 					<div class="profile-usertitle-job">
-						{{ user.date_expire|date:'Y-m-d' }}
+						{{ user.date_expire|date:'Y-m-d' }} &nbsp-&nbsp {{ user.date_expire|date:'Y-m-d'  }}
 					</div>
 						Date Expiry
 					<div class="profile-usertitle-job">
-						{{ user.date_expire|date:'Y-m-d'  }}
 					</div>
 				</div>
 				<!-- END SIDEBAR USER TITLE -->

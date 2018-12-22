@@ -7,8 +7,8 @@
 /* Profile sidebar */
 .profile-sidebar {
   padding: 20px 0 10px 0;
-  background: #fff;
-  border-radius: 10px;
+  background: #2c3742;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .profile-userpic img {
@@ -27,16 +27,16 @@
 }
 
 .profile-usertitle-name {
-  color: #5a7391;
-  font-size: 20px;
+  color: #d8d8d8/*5a7391*/;
+  font-size: 15px;
   font-weight: 600;
   margin-bottom: 7px;
 }
 
 .profile-usertitle-job {
   text-transform: uppercase;
-  color: #5b9bd1;
-  font-size: 15px;
+  color: #e5e5e5;
+  font-size: 14px;
   font-weight: 600;
   margin-bottom: 15px;
 }

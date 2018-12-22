@@ -19,7 +19,7 @@ def profile(request):
 
     c = current_user.get_descendants(include_self=True)
     # print(c.values('code'))    
-    tasks = Task.objects.filter(user__in=c)#.order_by('-id')[:5]
+    tasks = Task.objects.filter(user__in=c).order_by('-id')
 
     page = request.GET.get('page', 1)
     paginator = Paginator(tasks, 5)

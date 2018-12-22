@@ -1,6 +1,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #f7f7f7;
+  background-color: #eee !important;
   position: relative;
   margin: 0px;
   font-size: 12px;
@@ -271,7 +271,7 @@ footer .copy{
 
 .sidebar .nav > li {
 	margin: 0;
-   border-bottom:1px dashed #eee;
+   border-bottom:1px solid #eee;
 }
 
 .sidebar .nav > li:last-child{
@@ -336,7 +336,7 @@ footer .copy{
 .sidebar .nav li.open > a {
    background:#fff;
    color: #555;
-   border-bottom:1px dashed #eee;
+   border-bottom:1px solid #eee;
 }
 
 .sidebar .nav a .caret {
@@ -653,4 +653,10 @@ body {
 
 .margin-bt-15{
   margin-bottom: 15px;
+}
+
+#carouselHeader{ 
+  padding-left: 120px;
+  padding-right: 120px;
+  background-image: linear-gradient(to bottom, rgb(16,100,146), rgb(25,141,202));
 }
