@@ -1,0 +1,343 @@
+{% extends 'area2076/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link href="{% static "/css/profile.css" %}" rel="stylesheet">
+    <link href="{% static "/css/table.css" %}" rel="stylesheet">
+    {% endblock %}
+
+{% block content %}
+
+    <div class="page-content">
+    	<div class="row">
+		  <div class="col-md-3">
+		  	<div class="sidebar profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<img src="/{{ user.avatar }}" class="img-responsive" alt="">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						{{ user.first_name }} {{ user.last_name }}
+					</div>
+					<div class="profile-usertitle-job">
+						{{ user.get_role_display  }} - 
+						{{ user.code }}
+					</div>
+						Date Joined:
+					<div class="profile-usertitle-job">
+						{{ user.date_expire|date:'Y-m-d' }}
+					</div>
+						Date Expiry
+					<div class="profile-usertitle-job">
+						{{ user.date_expire|date:'Y-m-d'  }}
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<!-- <div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm">Follow</button>
+					<button type="button" class="btn btn-danger btn-sm">Message</button>
+				</div> -->
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+						<li class="active" id="dashboard-nav">
+							<a href="#">
+							<i class="glyphicon glyphicon-home"></i>
+							Dashboard </a>
+						</li>
+						<li id="team-nav">
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Team </a>
+						</li>
+						<!-- <li id="report-nav">
+							<a href="#">
+							<i class="glyphicon glyphicon-record"></i>
+							Reports </a>
+						</li> -->
+						<li id="help-nav">
+							<a href="#">
+							<i class="glyphicon glyphicon-flag"></i>
+							Help </a>
+						</li>
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		<!-- 		  	<div class="sidebar content-box" style="display: block;">
+                <ul class="nav">
+                    <li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+                    <li><a href="calendar.html"><i class="glyphicon glyphicon-calendar"></i> Calendar</a></li>
+                    <li><a href="stats.html"><i class="glyphicon glyphicon-stats"></i> Statistics (Charts)</a></li>
+                    <li><a href="tables.html"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
+                    <li><a href="buttons.html"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>
+                    <li><a href="editors.html"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
+                    <li><a href="forms.html"><i class="glyphicon glyphicon-tasks"></i> Forms</a></li>
+                    <li class="submenu">
+                         <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Pages
+                            <span class="caret pull-right"></span>
+                         </a>
+                         <ul>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="signup.html">Signup</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div> -->
+		  </div>
+		  <div class="col-md-9">
+		  	<!-- Dashboard -->
+		  	<div id="report" style="display: none;">
+		  		<div class="row">
+			  		<div class="table-wrapper">
+			            <div class="table-title">
+			                <div class="row">
+			                    <div class="col-sm-6">
+									<h2>Daily <b>Report</b></h2>
+								</div>
+								<div class="col-sm-6">
+									<a id="addRecord" href="#addRecordModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Record</span></a>
+									<!-- <a href="#deleteRecordModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						 -->
+								</div>
+			                </div>
+			            </div>
+			            <table class="table table-striped table-hover">
+			                <thead>
+			                    <tr>
+									<th>
+										<span class="custom-checkbox">
+											<input type="checkbox" id="selectAll">
+											<label for="selectAll"></label>
+										</span>
+									</th>
+			                        <th>By</th>
+			                        <th>Date</th>
+			                        <th>Prospect Name</th>
+									<th>Phone</th>
+			                        <th>Date of Birth</th>
+			                        <th>Status</th>
+			                    </tr>
+			                </thead>
+			                <tbody>
+			                	{% for task in tasks %}
+			                    <tr id="task{{ task.id }}">
+									<td>
+										<span class="custom-checkbox">
+											<input type="checkbox" id="checkbox1" name="options[]" value="1">
+											<label for="checkbox1"></label>
+										</span>
+									</td>
+			                        <td class="task_adder">{{ task.user.code }}</td>
+			                        <td class="client_date">{{ task.created_at }}</td>
+			                        <td class="client_name">{{ task.client_name }}</td>
+									<td class="client_number">{{ task.client_number }}</td>
+			                        <td class="client_dob">{{ task.client_dob|date:'Y-m-d' }}</td>
+			                        <td class="client_status">{{ task.status }}</td>
+			                        <td>
+			                            <a href="#editRecordModal" task-id="{{ task.id }}" id="editRecordModalBtn{{ task.id }}" class="edit editRecordModalBtn" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+			                            <a href="#deleteRecordModal" task-id="{{ task.id }}" id="deleteRecordModalBtn{{ task.id }}" class="delete deleteRecordModalBtn" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+			                        </td>
+			                    </tr>
+			                    {% endfor %}
+			                </tbody>
+			            </table>
+			            <script type="text/javascript">
+			            	var uid = '{{ user.id }}';
+			            </script>
+						<div class="clearfix">
+			                <div class="hint-text">Total <b>{{ tasks.paginator.count }}</b> entries</div>
+			                {% if tasks.has_other_pages %}
+			                <ul class="pagination">
+			                	{% if tasks.has_previous %}
+			                    	<li class="page-item"><a href="?page={{ tasks.previous_page_number }}">Previous</a></li>
+			                    {% else %}
+			                    	<li class="page-item disabled"><a href="#">Previous</a></li>
+			                    {% endif %}	
+			                    {% for i in tasks.paginator.page_range %}
+							      {% if tasks.number == i %}
+							      	<li class="page-item active"><a href="?page={{ i }}" class="page-link">{{ i }}</a></li>
+							      {% else %}
+							        <li class="page-item"><a href="?page={{ i }}" class="page-link">{{ i }}</a></li>
+							      {% endif %}
+							    {% endfor %}
+			                    {% if tasks.has_next %}
+			                    	<li class="page-item"><a href="?page={{ tasks.next_page_number }}" class="page-link">Next</a></li>
+							    {% else %}
+							      	<li class="page-item disabled"><a href="#" class="page-link">Next</a></li>
+							    {% endif %}
+			                    
+			                </ul>
+			                {% endif %}
+			            </div>
+			            <!-- {% if tasks.has_other_pages %}
+						  <ul class="pagination">
+						    {% if tasks.has_previous %}
+						      <li><a href="?page={{ tasks.previous_page_number }}">&laquo;</a></li>
+						    {% else %}
+						      <li class="disabled"><span>&laquo;</span></li>
+						    {% endif %}
+						    {% for i in tasks.paginator.page_range %}
+						      {% if tasks.number == i %}
+						        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+						      {% else %}
+						        <li><a href="?page={{ i }}">{{ i }}</a></li>
+						      {% endif %}
+						    {% endfor %}
+						    {% if tasks.has_next %}
+						      <li><a href="?page={{ tasks.next_page_number }}">&raquo;</a></li>
+						    {% else %}
+						      <li class="disabled"><span>&raquo;</span></li>
+						    {% endif %}
+						  </ul>
+						{% endif %} -->
+			        </div>
+			    </div>
+				<!-- Edit Modal HTML -->
+				<div id="addRecordModal" class="modal fade">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<form>
+								<div class="modal-header">						
+									<h4 class="modal-title">Add Record</h4>
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								</div>
+								<div class="modal-body">					
+									<div class="form-group">
+										<label>Prospect Name</label>
+										<input type="text" class="form-control client_name" required>
+									</div>
+									<div class="form-group">
+										<label>Phone Number</label>
+										<input type="tel" class="form-control client_number" required>
+									</div>
+									<div class="form-group">
+										<label>Date of Birth</label>
+										<input type="date" value="1990-01-01" class="form-control client_dob" required></input>
+									</div>
+									<div class="form-group">
+										<label>Status</label>
+										<input type="text" class="form-control client_status" required>
+									</div>					
+								</div>
+								<div class="modal-footer">
+									<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+									<input id="addRecordModalSubmit" type="submit" class="btn btn-success" value="Add">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- Edit Modal HTML -->
+				<div id="editRecordModal" class="modal fade">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<form>
+								<div class="modal-header">						
+									<h4 class="modal-title">Edit Record</h4>
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								</div>
+								<div class="modal-body">					
+									<div class="form-group">
+										<label>Prospect Name</label>
+										<input type="text" class="form-control client_name" required>
+									</div>
+									<div class="form-group">
+										<label>Phone Number</label>
+										<input type="tel" class="form-control client_number" required>
+									</div>
+									<div class="form-group">
+										<label>Date of Birth</label>
+										<input type="date" value="1990-01-01" class="form-control client_dob" required></input>
+									</div>
+									<div class="form-group">
+										<label>Status</label>
+										<input type="text" class="form-control client_status" required>
+									</div>					
+								</div>
+								<div class="modal-footer">
+									<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+									<input id="editRecordModalSubmit" type="submit" class="btn btn-success" value="Edit">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- Delete Modal HTML -->
+				<div id="deleteRecordModal" class="modal fade">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<form>
+								<div class="modal-header">						
+									<h4 class="modal-title">Delete Record</h4>
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								</div>
+								<div class="modal-body">					
+									<p>Are you sure you want to delete these Records?</p>
+									<p class="text-warning"><small>This action cannot be undone.</small></p>
+								</div>
+								<div class="modal-footer">
+									<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+									<input id="deleteRecordModalSubmit" type="submit" class="btn btn-danger" value="Delete">
+								</div>
+							</form>
+						</div>
+					</div>
+			  	</div>
+		  	</div>
+
+		  	<div id="team" style="display: none;">
+		  		<!-- Team Members Row -->
+				<div id="smanager" class="row team-heading">
+					<div class="col-lg-12">
+					  	<div class="table-title">
+			                <div class="row">
+			                    <div class="col-sm-6">
+									<h2>Sales <b>Manager</b></h2>
+								</div>
+			                </div>
+			            </div>					
+			        </div>
+				</div>
+
+				<div id="sofficer" class="row team-heading">
+					<div class="col-lg-12">
+					  	<div class="table-title">
+			                <div class="row">
+			                    <div class="col-sm-6">
+									<h2>Sales <b>Officer</b></h2>
+								</div>
+			                </div>
+			            </div>					
+			        </div>
+				</div>
+
+				<div id="srepresentative" class="row team-heading">
+					<div class="col-lg-12">
+					  	<div class="table-title">
+			                <div class="row">
+			                    <div class="col-sm-6">
+									<h2>Sales <b>Reprersentative</b></h2>
+								</div>
+			                </div>
+			            </div>					
+			        </div>
+				</div>
+		  	</div>
+
+		  </div>
+		</div>
+    </div>
+
+{% endblock %}	
+
+
+{% block scripts %}
+    <script src="{% static "/js/tables.js" %}"></script>
+    <script src="{% static "/js/profile.js" %}"></script>
+{% endblock %}
