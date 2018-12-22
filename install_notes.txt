@@ -1,1 +1,5 @@
+*For filtering API - used in API Views
 pip install django-url-filter
+
+*For Tree like structure in User Model
+pip install django django-mptt

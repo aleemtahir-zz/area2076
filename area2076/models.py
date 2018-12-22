@@ -1,3 +1,4 @@
+
 from __future__ import unicode_literals
 
 from django.db import models
@@ -48,7 +49,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         (AREA_MANAGER, 'area manager')
     )
 
-    email = models.EmailField(_('email address'))
+    email = models.EmailField(_('email address'), null=True)
     first_name = models.CharField(_('first name'), max_length=30, blank=True, null=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True, null=True)
     code = models.IntegerField(blank=True, null=True, unique=True)
@@ -63,7 +64,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'code'
-    REQUIRED_FIELDS = ['email','role','is_admin','manager_id']
+    REQUIRED_FIELDS = ['email','role','is_admin']
 
     class Meta:
         verbose_name = _('user')
@@ -82,14 +83,14 @@ class User(AbstractBaseUser, PermissionsMixin):
         '''
         return self.first_name
 
-    def email_user(self, subject, message, from_email=None, **kwargs):
+    def email_adduser(self, subject, message, from_email=None, **kwargs):
         '''
         Sends an email to this User.
         '''
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
     def __str__(self):
-        return self.email
+        return format(self.code)
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"

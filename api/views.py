@@ -43,4 +43,6 @@ class TaskViewSet(viewsets.ModelViewSet):
     API endpoint that allows Tasks to be viewed or edited.
     """
     queryset = Task.objects.all()
-    serializer_class = TaskSerializer    
+    serializer_class = TaskSerializer   
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ['id', 'user_id' ] 
