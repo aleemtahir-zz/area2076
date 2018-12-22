@@ -3,3 +3,4 @@ pip install django-url-filter
 
 *For Tree like structure in User Model
 pip install django django-mptt
+https://stackabuse.com/modified-preorder-tree-traversal-in-django/

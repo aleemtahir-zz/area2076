@@ -1,12 +1,12 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from area2076.models import User
 from api.models import Task
 import json
 
 def index(request):  
-    default_user = User.objects.get(id=2)
+    default_user = User.objects.get(id=1)
     context = {'user': default_user}
 
     return render(request, 'area2076/index.html', context)
@@ -14,7 +14,12 @@ def index(request):
 
 def profile(request):  
     current_user = request.user
-    tasks = Task.objects.filter(user=current_user.id)#.order_by('-id')[:5]
+    if not current_user.is_authenticated:
+        return HttpResponseRedirect('/accounts/login')
+
+    c = current_user.get_descendants(include_self=True)
+    # print(c.values('code'))    
+    tasks = Task.objects.filter(user__in=c)#.order_by('-id')[:5]
 
     page = request.GET.get('page', 1)
     paginator = Paginator(tasks, 5)

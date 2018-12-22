@@ -20,4 +20,4 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 	tasks = TaskSerializer(many=True, read_only=True)
 	class Meta:
 		model = User
-		fields = ('url', 'code', 'email', 'first_name', 'last_name', 'avatar', 'tasks', 'manager')
+		fields = ('url', 'code', 'email', 'first_name', 'last_name', 'avatar', 'tasks', 'parent')

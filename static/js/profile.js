@@ -28,11 +28,11 @@ $(document).ready(function() {
 
 	$.get('/api/users/?role=SM').done(function(data){
 	    $.each(data.results, function(k, v) {
-		    let element = '<div class="smanager col-lg-4 col-sm-6 text-center mb-4">'+
+		    let element = '<div class="smanager col-lg-3 col-sm-6 text-center mb-3">'+
 							  '<img class="rounded-circle img-fluid d-block mx-auto" src="'+v.avatar.replace('/api/users','')+'" alt="" width="150px" height="150px">'+
-							  '<h3>'+v.first_name+' '+v.last_name+
+							  '<h4>'+v.first_name+' '+v.last_name+
 							    '<small>'+v.code+'</small>'+
-							  '</h3>'+
+							  '</h4>'+
 						  '</div>';
 			$("#smanager").append(element);			  
 		});
@@ -40,11 +40,11 @@ $(document).ready(function() {
 
 	$.get('/api/users/?role=SO').done(function(data){
 	    $.each(data.results, function(k, v) {
-		    let element = '<div class="sofficer col-lg-4 col-sm-6 text-center mb-4">'+
+		    let element = '<div class="sofficer col-lg-3 col-sm-6 text-center mb-3">'+
 							  '<img class="rounded-circle img-fluid d-block mx-auto" src="'+v.avatar.replace('/api/users','')+'" alt="" width="150px" height="150px">'+
-							  '<h3>'+v.first_name+' '+v.last_name+
+							  '<h4>'+v.first_name+' '+v.last_name+
 							    '<small>'+v.code+'</small>'+
-							  '</h3>'+
+							  '</h4>'+
 						  '</div>';
 			$("#sofficer").append(element);			  
 		});
@@ -52,11 +52,11 @@ $(document).ready(function() {
 
 	$.get('/api/users/?role=SR').done(function(data){
 	    $.each(data.results, function(k, v) {
-		    let element = '<div class="srepresentative col-lg-4 col-sm-6 text-center mb-4">'+
+		    let element = '<div class="srepresentative col-lg-3 col-sm-6 text-center mb-3">'+
 							  '<img class="rounded-circle img-fluid d-block mx-auto" src="'+v.avatar.replace('/api/users','')+'" alt="" width="150px" height="150px">'+
-							  '<h3>'+v.first_name+' '+v.last_name+
+							  '<h4>'+v.first_name+' '+v.last_name+
 							    '<small>'+v.code+'</small>'+
-							  '</h3>'+
+							  '</h4>'+
 						  '</div>';
 			$("#srepresentative").append(element);			  
 		});

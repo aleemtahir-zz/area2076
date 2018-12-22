@@ -8,6 +8,7 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.utils.translation import ugettext_lazy as _
 
 from django.contrib.auth.base_user import BaseUserManager
+from mptt.models import MPTTModel, TreeForeignKey
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -36,7 +37,7 @@ class UserManager(BaseUserManager):
 
         return self._create_user(email, password, **extra_fields)
 
-class User(AbstractBaseUser, PermissionsMixin):
+class User(AbstractBaseUser, PermissionsMixin, MPTTModel):
     REPRESENTATIVE = 'SR'
     OFFICER = 'SO'
     MANAGER = 'SM'
@@ -57,9 +58,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateField(_('date joined'), auto_now_add=False, null=True)
     date_expire = models.DateField(_('date expire'), auto_now_add=False, null=True)
     avatar = models.ImageField(upload_to='static/avatars/',default='static/avatars/default.jpg', null=True, blank=True)
-    manager = models.ForeignKey('self', null=True, related_name='user', on_delete=models.DO_NOTHING)
     is_active = models.BooleanField(_('active'), default=True)
     is_admin = models.BooleanField(default=False)
+
+    # manager = models.ForeignKey('self', null=True, related_name='user', on_delete=models.DO_NOTHING)
+    parent = TreeForeignKey('self', null=True, related_name='user', on_delete=models.DO_NOTHING)
 
     objects = UserManager()
 
