@@ -4,3 +4,14 @@ pip install django-url-filter
 *For Tree like structure in User Model
 pip install django django-mptt
 https://stackabuse.com/modified-preorder-tree-traversal-in-django/
+
+*To install mysql client on CPanel 
+pip install pymysql
+
+Then, edit the __init__.py file in your project origin dir(the same as settings.py)
+
+add:
+
+import pymysql
+
+pymysql.install_as_MySQLdb()
