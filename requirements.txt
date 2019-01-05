@@ -1,8 +1,11 @@
+cached-property==1.5.1
 Django==2.1.4
 django-js-asset==1.1.0
 django-mptt==0.9.1
 django-url-filter==0.3.11
 djangorestframework==3.9.0
+enum-compat==0.0.2
 Pillow==5.3.0
 PyMySQL==0.9.3
-pytz
+pytz==2018.7
+six==1.12.0
