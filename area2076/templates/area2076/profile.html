@@ -4,337 +4,409 @@
 {% block styles %}
     <link href="{% static "/css/profile.css" %}" rel="stylesheet">
     <link href="{% static "/css/table.css" %}" rel="stylesheet">
-    {% endblock %}
+{% endblock %}
+    
 
 {% block content %}
-
-    <div class="page-content">
-    	<div class="row">
-		  <div class="col-md-2">
-		  	<div class="sidebar profile-sidebar">
-				<!-- SIDEBAR USERPIC -->
-				<div class="profile-userpic">
-					<img src="/{{ user.avatar }}" class="img-responsive" alt="">
-				</div>
-				<!-- END SIDEBAR USERPIC -->
-				<!-- SIDEBAR USER TITLE -->
-				<div class="profile-usertitle">
-					<div class="profile-usertitle-name">
-						{{ user.first_name }} {{ user.last_name }}
-					</div>
-					<div class="profile-usertitle-job">
-						{{ user.get_role_display  }} - 
-						{{ user.code }}
-					</div>
-					<div class="profile-usertitle-job">
-						{{ user.date_expire|date:'Y-m-d' }} &nbsp-&nbsp {{ user.date_expire|date:'Y-m-d'  }}
-					</div>
-						Date Expiry
-					<div class="profile-usertitle-job">
-					</div>
-					<hr>
-				</div>
-				<!-- END SIDEBAR USER TITLE -->
-				<!-- SIDEBAR BUTTONS -->
-				<!-- <div class="profile-userbuttons">
-					<button type="button" class="btn btn-success btn-sm">Follow</button>
-					<button type="button" class="btn btn-danger btn-sm">Message</button>
-				</div> -->
-				<!-- END SIDEBAR BUTTONS -->
-				<!-- SIDEBAR MENU -->
-				<div class="profile-usermenu">
-					<ul class="nav">
-						<li class="active" id="dashboard-nav">
-							<a href="#">
-							<i class="glyphicon glyphicon-home"></i>
-							Dashboard </a>
-						</li>
-						<li id="team-nav">
-							<a href="#">
-							<i class="glyphicon glyphicon-user"></i>
-							Team </a>
-						</li>
-						<li id="report-nav">
-							<a href="#">
-							<i class="glyphicon glyphicon-record"></i>
-							Reports </a>
-						</li>
-						<li id="help-nav">
-							<a href="#">
-							<i class="glyphicon glyphicon-flag"></i>
-							Help </a>
-						</li>
-					</ul>
-				</div>
-				<!-- END MENU -->
-			</div>
-		<!-- 		  	<div class="sidebar content-box" style="display: block;">
-                <ul class="nav">
-                    <li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
-                    <li><a href="calendar.html"><i class="glyphicon glyphicon-calendar"></i> Calendar</a></li>
-                    <li><a href="stats.html"><i class="glyphicon glyphicon-stats"></i> Statistics (Charts)</a></li>
-                    <li><a href="tables.html"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
-                    <li><a href="buttons.html"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>
-                    <li><a href="editors.html"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
-                    <li><a href="forms.html"><i class="glyphicon glyphicon-tasks"></i> Forms</a></li>
-                    <li class="submenu">
-                         <a href="#">
-                            <i class="glyphicon glyphicon-list"></i> Pages
-                            <span class="caret pull-right"></span>
-                         </a>
-                         <ul>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="signup.html">Signup</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div> -->
-		  </div>
-		  <div class="col-md-10">
-		  	<!-- Dashboard -->
-		  	<div id="report" style="display: none;">
-		  		<div class="row">
-			  		<div class="table-wrapper">
-			            <div class="table-title">
-			                <div class="row">
-			                    <div class="col-sm-6">
-									<h2>Daily <b>Report</b></h2>
-								</div>
-								<div class="col-sm-6">
-									<a id="addRecord" href="#addRecordModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Record</span></a>
-									<!-- <a href="#deleteRecordModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						 -->
-								</div>
-			                </div>
-			            </div>
-			            <table class="table table-striped table-hover">
-			                <thead>
-			                    <tr>
-									<th>
-										<span class="custom-checkbox">
-											<input type="checkbox" id="selectAll">
-											<label for="selectAll"></label>
-										</span>
-									</th>
-			                        <th>By</th>
-			                        <th>Date</th>
-			                        <th>Prospect Name</th>
-									<th>Phone</th>
-			                        <th>Date of Birth</th>
-			                        <th>Status</th>
-			                    </tr>
-			                </thead>
-			                <tbody>
-			                	{% for task in tasks %}
-			                    <tr id="task{{ task.id }}">
-									<td>
-										<span class="custom-checkbox">
-											<input type="checkbox" id="checkbox1" name="options[]" value="1">
-											<label for="checkbox1"></label>
-										</span>
-									</td>
-			                        <td class="task_adder">{{ task.user.code }}</td>
-			                        <td class="client_date">{{ task.created_at }}</td>
-			                        <td class="client_name">{{ task.client_name }}</td>
-									<td class="client_number">{{ task.client_number }}</td>
-			                        <td class="client_dob">{{ task.client_dob|date:'Y-m-d' }}</td>
-			                        <td class="client_status">{{ task.status }}</td>
-			                        <td>
-			                            <a href="#editRecordModal" task-id="{{ task.id }}" id="editRecordModalBtn{{ task.id }}" class="edit editRecordModalBtn" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-			                            <a href="#deleteRecordModal" task-id="{{ task.id }}" id="deleteRecordModalBtn{{ task.id }}" class="delete deleteRecordModalBtn" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-			                        </td>
-			                    </tr>
-			                    {% endfor %}
-			                </tbody>
-			            </table>
-			            <script type="text/javascript">
-			            	var uid = '{{ user.id }}';
-			            </script>
-						<div class="clearfix">
-			                <div class="hint-text">Total <b>{{ tasks.paginator.count }}</b> entries</div>
-			                {% if tasks.has_other_pages %}
-			                <ul class="pagination">
-			                	{% if tasks.has_previous %}
-			                    	<li class="page-item"><a href="?page={{ tasks.previous_page_number }}">Previous</a></li>
-			                    {% else %}
-			                    	<li class="page-item disabled"><a href="#">Previous</a></li>
-			                    {% endif %}	
-			                    {% for i in tasks.paginator.page_range %}
-							      {% if tasks.number == i %}
-							      	<li class="page-item active"><a href="?page={{ i }}" class="page-link">{{ i }}</a></li>
-							      {% else %}
-							        <li class="page-item"><a href="?page={{ i }}" class="page-link">{{ i }}</a></li>
-							      {% endif %}
-							    {% endfor %}
-			                    {% if tasks.has_next %}
-			                    	<li class="page-item"><a href="?page={{ tasks.next_page_number }}" class="page-link">Next</a></li>
-							    {% else %}
-							      	<li class="page-item disabled"><a href="#" class="page-link">Next</a></li>
-							    {% endif %}
-			                    
-			                </ul>
-			                {% endif %}
-			            </div>
-			            <!-- {% if tasks.has_other_pages %}
-						  <ul class="pagination">
-						    {% if tasks.has_previous %}
-						      <li><a href="?page={{ tasks.previous_page_number }}">&laquo;</a></li>
-						    {% else %}
-						      <li class="disabled"><span>&laquo;</span></li>
-						    {% endif %}
-						    {% for i in tasks.paginator.page_range %}
-						      {% if tasks.number == i %}
-						        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-						      {% else %}
-						        <li><a href="?page={{ i }}">{{ i }}</a></li>
-						      {% endif %}
-						    {% endfor %}
-						    {% if tasks.has_next %}
-						      <li><a href="?page={{ tasks.next_page_number }}">&raquo;</a></li>
-						    {% else %}
-						      <li class="disabled"><span>&raquo;</span></li>
-						    {% endif %}
-						  </ul>
-						{% endif %} -->
-			        </div>
-			    </div>
-				<!-- Edit Modal HTML -->
-				<div id="addRecordModal" class="modal fade">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<form>
-								<div class="modal-header">						
-									<h4 class="modal-title">Add Record</h4>
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								</div>
-								<div class="modal-body">					
-									<div class="form-group">
-										<label>Prospect Name</label>
-										<input type="text" class="form-control client_name" required>
-									</div>
-									<div class="form-group">
-										<label>Phone Number</label>
-										<input type="tel" class="form-control client_number" required>
-									</div>
-									<div class="form-group">
-										<label>Date of Birth</label>
-										<input type="date" value="1990-01-01" class="form-control client_dob" required></input>
-									</div>
-									<div class="form-group">
-										<label>Status</label>
-										<input type="text" class="form-control client_status" required>
-									</div>					
-								</div>
-								<div class="modal-footer">
-									<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-									<input id="addRecordModalSubmit" type="submit" class="btn btn-success" value="Add">
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<!-- Edit Modal HTML -->
-				<div id="editRecordModal" class="modal fade">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<form>
-								<div class="modal-header">						
-									<h4 class="modal-title">Edit Record</h4>
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								</div>
-								<div class="modal-body">					
-									<div class="form-group">
-										<label>Prospect Name</label>
-										<input type="text" class="form-control client_name" required>
-									</div>
-									<div class="form-group">
-										<label>Phone Number</label>
-										<input type="tel" class="form-control client_number" required>
-									</div>
-									<div class="form-group">
-										<label>Date of Birth</label>
-										<input type="date" value="1990-01-01" class="form-control client_dob" required></input>
-									</div>
-									<div class="form-group">
-										<label>Status</label>
-										<input type="text" class="form-control client_status" required>
-									</div>					
-								</div>
-								<div class="modal-footer">
-									<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-									<input id="editRecordModalSubmit" type="submit" class="btn btn-success" value="Edit">
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<!-- Delete Modal HTML -->
-				<div id="deleteRecordModal" class="modal fade">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<form>
-								<div class="modal-header">						
-									<h4 class="modal-title">Delete Record</h4>
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								</div>
-								<div class="modal-body">					
-									<p>Are you sure you want to delete these Records?</p>
-									<p class="text-warning"><small>This action cannot be undone.</small></p>
-								</div>
-								<div class="modal-footer">
-									<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-									<input id="deleteRecordModalSubmit" type="submit" class="btn btn-danger" value="Delete">
-								</div>
-							</form>
-						</div>
-					</div>
-			  	</div>
-		  	</div>
-
-		  	<div id="team" style="display: none;">
-		  		<!-- Team Members Row -->
-				<div id="smanager" class="row team-heading margin-bt-15">
-					<div class="col-lg-12">
-					  	<div class="table-title">
-			                <div class="row">
-			                    <div class="col-sm-6">
-									<h2>Sales <b>Manager</b></h2>
-								</div>
-			                </div>
-			            </div>					
-			        </div>
-				</div>
-
-				<div id="sofficer" class="row team-heading margin-bt-15">
-					<div class="col-lg-12">
-					  	<div class="table-title">
-			                <div class="row">
-			                    <div class="col-sm-6">
-									<h2>Sales <b>Officer</b></h2>
-								</div>
-			                </div>
-			            </div>					
-			        </div>
-				</div>
-
-				<div id="srepresentative" class="row team-heading margin-bt-15">
-					<div class="col-lg-12">
-					  	<div class="table-title">
-			                <div class="row">
-			                    <div class="col-sm-6">
-									<h2>Sales <b>Reprersentative</b></h2>
-								</div>
-			                </div>
-			            </div>					
-			        </div>
-				</div>
-		  	</div>
-
-		  </div>
-		</div>
+<!-- Navbar -->
+<div class="w3-top">
+ <div id="nav" class="w3-bar w3-theme-d2 w3-left-align w3-large">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a id="report-nav" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Area 2076</a>
+  <a id="team-nav" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Team"><i class="fa fa-user"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>     
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
+      <a href="#" class="w3-bar-item w3-button">One new friend request</a>
+      <a href="#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
+      <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>
     </div>
+  </div>
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
+    <img src="/w3images/avatar2.png" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
+  </a>
+ </div>
+</div>
 
-{% endblock %}	
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
+</div>
 
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m3">
+      <!-- Profile -->
+      <div class="w3-card w3-round w3-white">
+        <div class="w3-container">
+         <h4 class="w3-center">{{ user.name }}</h4>
+         <p class="w3-center"><img src="/{{ user.avatar }}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <hr>
+         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{ user.get_role_display  }}, {{ user.code }}</p>
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Lahore, PK</p>
+         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{ user.date_expire|date:'Y-m-d' }} &nbsp-&nbsp {{ user.date_expire|date:'Y-m-d'  }}</p>
+        </div>
+      </div>
+      <br>
+      
+      <!-- Accordion -->
+      <div class="w3-card w3-round">
+        <div class="w3-white">
+          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
+          <div id="Demo1" class="w3-hide w3-container">
+            <p>Some text..</p>
+          </div>
+          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
+          <div id="Demo2" class="w3-hide w3-container">
+            <p>Some other text..</p>
+          </div>
+          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
+          <div id="Demo3" class="w3-hide w3-container">
+         <div class="w3-row-padding">
+         <br>
+           <div class="w3-half">
+             <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+           </div>
+           <div class="w3-half">
+             <img src="/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">
+           </div>
+         </div>
+          </div>
+        </div>      
+      </div>
+      <br>
+      
+      <!-- Interests --> 
+      <div class="w3-card w3-round w3-white w3-hide-small">
+        <div class="w3-container">
+          <p>Interests</p>
+          <p>
+            <span class="w3-tag w3-small w3-theme-d5">News</span>
+            <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
+            <span class="w3-tag w3-small w3-theme-d3">Labels</span>
+            <span class="w3-tag w3-small w3-theme-d2">Games</span>
+            <span class="w3-tag w3-small w3-theme-d1">Friends</span>
+            <span class="w3-tag w3-small w3-theme">Games</span>
+            <span class="w3-tag w3-small w3-theme-l1">Friends</span>
+            <span class="w3-tag w3-small w3-theme-l2">Food</span>
+            <span class="w3-tag w3-small w3-theme-l3">Design</span>
+            <span class="w3-tag w3-small w3-theme-l4">Art</span>
+            <span class="w3-tag w3-small w3-theme-l5">Photos</span>
+          </p>
+        </div>
+      </div>
+      <br>
+      
+      <!-- Alert Box -->
+      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+          <i class="fa fa-remove"></i>
+        </span>
+        <p><strong>Hey!</strong></p>
+        <p>People are looking at your profile. Find out who.</p>
+      </div>
+    
+    <!-- End Left Column -->
+    </div>
+    
+    <!-- Middle Column -->
+    <div id="report" class="w3-col m7" style="display: block;">
+      <div class="w3-row-padding ">
+        <div class="w3-col m12 w3-white">
+         	<div class="w3-card w3-round">
+	          	<header class="w3-container w3-theme-d2">
+	                <div class="w3-row">
+	                	<div class="w3-col s6 m6 l6 w3-padding">
+	                		<h4>Daily <b>Report</b></h4>
+	                	</div>
+	                	<div class="w3-col s6 m6 l6 w3-padding">
+	                		<a id="addRecord" href="#addRecordModal" class="w3-button w3-theme w3-right" data-toggle="modal"><i class="fa fa-plus"></i> <span>Add Record</span></a>
+	                	</div>
+	                </div>
+				</header>
+	            <div class="w3-container w3-responsive">
+	              <table class="w3-table w3-striped">
+	                <thead>
+	                  <tr>
+	                    <th>By</th>
+	                    <th>Date</th>
+	                    <th>Prospect Name</th>
+	                    <th>Phone</th>
+	                    <th>Date of Birth</th>
+	                    <th>Status</th>
+	                  </tr>
+	                </thead>
+	                <tbody>
+	                  {% for task in tasks %}
+	                    <tr id="task{{ task.id }}">
+	                      <td class="task_adder">{{ task.user.code }}</td>
+	                      <td class="client_date">{{ task.created_at|date:'Y-m-d' }}</td>
+	                      <td class="client_name">{{ task.client_name }}</td>
+	                      <td class="client_number">{{ task.client_number }}</td>
+	                      <td class="client_dob">{{ task.client_dob|date:'Y-m-d' }}</td>
+	                      <td class="client_status">{{ task.status }}</td>
+	                      <td>
+	                          <a href="#editRecordModal" task-id="{{ task.id }}" id="editRecordModalBtn{{ task.id }}" class="edit editRecordModalBtn" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+	                          <a href="#deleteRecordModal" task-id="{{ task.id }}" id="deleteRecordModalBtn{{ task.id }}" class="delete deleteRecordModalBtn" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+	                      </td>
+	                    </tr>
+	                  {% endfor %}
+	                </tbody>
+	              </table>
+	              <script type="text/javascript">
+	                var uid = '{{ user.id }}';
+	              </script>
+	              <div class="clearfix">
+	                <div class="hint-text">Total <b>{{ tasks.paginator.count }}</b> entries</div>
+	                {% if tasks.has_other_pages %}
+	                  <ul class="pagination">
+	                    {% if tasks.has_previous %}
+	                        <li class="page-item"><a href="?page={{ tasks.previous_page_number }}">Previous</a></li>
+	                    {% else %}
+	                      <li class="page-item disabled"><a href="#">Previous</a></li>
+	                    {% endif %} 
+	                    {% for i in tasks.paginator.page_range %}
+	                      {% if tasks.number == i %}
+	                        <li class="page-item active"><a href="?page={{ i }}" class="page-link">{{ i }}</a></li>
+	                      {% else %}
+	                        <li class="page-item"><a href="?page={{ i }}" class="page-link">{{ i }}</a></li>
+	                      {% endif %}
+	                    {% endfor %}
+	                    {% if tasks.has_next %}
+	                      <li class="page-item"><a href="?page={{ tasks.next_page_number }}" class="page-link">Next</a></li>
+	                    {% else %}
+	                      <li class="page-item disabled"><a href="#" class="page-link">Next</a></li>
+	                    {% endif %}
+	                  </ul>
+	                {% endif %}
+	              </div>
+	            </div>
+	            <!-- Edit Modal HTML -->
+	            <div id="addRecordModal" class="modal fade">
+	              <div class="modal-dialog">
+	                <div class="modal-content">
+	                  <form>
+	                    <div class="modal-header">            
+	                      <h4 class="modal-title">Add Record</h4>
+	                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                    </div>
+	                    <div class="modal-body">          
+	                      <div class="form-group">
+	                        <label>Prospect Name</label>
+	                        <input type="text" class="form-control client_name" required>
+	                      </div>
+	                      <div class="form-group">
+	                        <label>Phone Number</label>
+	                        <input type="tel" class="form-control client_number" required>
+	                      </div>
+	                      <div class="form-group">
+	                        <label>Date of Birth</label>
+	                        <input type="date" value="1990-01-01" class="form-control client_dob" required></input>
+	                      </div>
+	                      <div class="form-group">
+	                        <label>Status</label>
+	                        <input type="text" class="form-control client_status" required>
+	                      </div>          
+	                    </div>
+	                    <div class="modal-footer">
+	                      <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+	                      <input id="addRecordModalSubmit" type="submit" class="btn btn-success" value="Add">
+	                    </div>
+	                  </form>
+	                </div>
+	              </div>
+	            </div>
+	            <!-- Edit Modal HTML -->
+	            <div id="editRecordModal" class="modal fade">
+	              <div class="modal-dialog">
+	                <div class="modal-content">
+	                  <form>
+	                    <div class="modal-header">            
+	                      <h4 class="modal-title">Edit Record</h4>
+	                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                    </div>
+	                    <div class="modal-body">          
+	                      <div class="form-group">
+	                        <label>Prospect Name</label>
+	                        <input type="text" class="form-control client_name" required>
+	                      </div>
+	                      <div class="form-group">
+	                        <label>Phone Number</label>
+	                        <input type="tel" class="form-control client_number" required>
+	                      </div>
+	                      <div class="form-group">
+	                        <label>Date of Birth</label>
+	                        <input type="date" value="1990-01-01" class="form-control client_dob" required></input>
+	                      </div>
+	                      <div class="form-group">
+	                        <label>Status</label>
+	                        <input type="text" class="form-control client_status" required>
+	                      </div>          
+	                    </div>
+	                    <div class="modal-footer">
+	                      <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+	                      <input id="editRecordModalSubmit" type="submit" class="btn btn-success" value="Edit">
+	                    </div>
+	                  </form>
+	                </div>
+	              </div>
+	            </div>
+	            <!-- Delete Modal HTML -->
+	            <div id="deleteRecordModal" class="modal fade">
+	              <div class="modal-dialog">
+	                <div class="modal-content">
+	                  <form>
+	                    <div class="modal-header">            
+	                      <h4 class="modal-title">Delete Record</h4>
+	                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                    </div>
+	                    <div class="modal-body">          
+	                      <p>Are you sure you want to delete these Records?</p>
+	                      <p class="text-warning"><small>This action cannot be undone.</small></p>
+	                    </div>
+	                    <div class="modal-footer">
+	                      <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+	                      <input id="deleteRecordModalSubmit" type="submit" class="btn btn-danger" value="Delete">
+	                    </div>
+	                  </form>
+	                </div>
+	              </div>
+	            </div>  
+         	</div>
+        </div>
+      </div>
+  	</div>
+
+    <div id="team" class="w3-col m7" style="display: none;">
+
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+         	<div id="smanager" class="w3-card w3-round w3-white">
+	          	<header class="w3-container w3-theme-d2 w3-margin-bottom">
+	                <div class="w3-row">
+	                	<div class="w3-col m12 w3-padding">
+	                		<h4>Sales <b>Managers</b></h4>
+	                	</div>
+	                </div>
+				</header>
+			</div>
+        </div>
+      </div>
+      
+      <div id="sofficer" class="w3-card w3-white w3-round w3-margin">
+      	<header class="w3-container w3-theme-d2 w3-margin-bottom">
+            <div class="w3-row">
+            	<div class="w3-col m12 w3-padding">
+            		<h4>Sales <b>Officers</b></h4>
+            	</div>
+            </div>
+		</header>
+      </div>
+      <div class="w3-container"></div>
+
+      <div id="srepresentative" class="w3-card w3-white w3-round w3-margin">
+      	<header class="w3-container w3-theme-d2 w3-margin-bottom">
+            <div class="w3-row">
+            	<div class="w3-col m12 w3-padding">
+            		<h4>Sales <b>Representatives</b></h4>
+            	</div>
+            </div>
+		</header>
+      </div>
+      
+      <!-- <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="/w3images/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">16 min</span>
+        <h4>Jane Doe</h4><br>
+        <hr class="w3-clear">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+      </div>  
+
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="/w3images/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">32 min</span>
+        <h4>Angie Jane</h4><br>
+        <hr class="w3-clear">
+        <p>Have you seen this?</p>
+        <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+      </div>  -->
+    </div>
+    <!-- End Middle Column -->
+    
+    <!-- Right Column -->
+    <div class="w3-col m2">
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <p>Upcoming Events:</p>
+          <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
+          <p><strong>Holiday</strong></p>
+          <p>Friday 15:00</p>
+          <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
+        </div>
+      </div>
+      <br>
+      
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <p>Friend Request</p>
+          <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
+          <span>Jane Doe</span>
+          <div class="w3-row w3-opacity">
+            <div class="w3-half">
+              <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
+            </div>
+            <div class="w3-half">
+              <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      
+      <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
+        <p>ADS</p>
+      </div>
+      <br>
+      
+      <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
+        <p><i class="fa fa-bug w3-xxlarge"></i></p>
+      </div>
+      
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+<!-- End Page Container -->
+</div>
+<br>
+{% endblock %}
 
 {% block scripts %}
     <script src="{% static "/js/tables.js" %}"></script>

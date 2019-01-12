@@ -33,8 +33,9 @@
     }
     .table-title .btn i {
         float: left;
-        font-size: 21px;
+        font-size: 13px;
         margin-right: 5px;
+        margin-top: 4px;
     }
     .table-title .btn span {
         float: left;
@@ -211,3 +212,1137 @@
     .modal form label {
         font-weight: normal;
     }   
+
+
+/*Policy Table*/
+
+/* Smartphones (portrait and landscape) --  --  --  --  -- - */
+
+@media screen and (min-width: 304px) and (max-width: 667px) {
+    /* Styles */
+    /* Table thead background */
+    
+    #tbl .tbl-one table thead tr {
+        background-color: #011627;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #ffffff;
+    }
+    #tbl .tbl-two table thead tr {
+        background-color: #2EC4B6;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #ffffff;
+    }
+    #tbl .tbl-three table thead tr {
+        background-color: #E71D36;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #ffffff;
+    }
+    #tbl .tbl-four table thead tr {
+        background-color: #FF9F1C;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #ffffff;
+    }
+    /* Table Standard cells */
+    
+    #tbl .table-bordered>thead>tr>td,
+    #tbl .table-bordered>thead>tr>th {
+        border-bottom-width: 0px;
+        font-weight: 600;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        padding: 14px 10px;
+        font-family: 'Open Sans', sans-serif;
+        border: transparent;
+    }
+    /* Table hyperlink */
+    
+    #tbl .table-bordered>tbody>tr>td>a {
+        color: #333333 !important;
+        text-decoration: none;
+    }
+    /* Table button */
+    
+    #tbl .table-bordered>tbody>tr>td>a.btn-success {
+        color: #ffffff !important;
+        text-decoration: none;
+    }
+    /* Table text blink */
+    
+    #tbl .blink {
+        animation: blinks 1s linear infinite;
+        color: #0000FF;
+    }
+    #tbl .table-responsive {
+        border: medium none transparent;
+    }
+    @keyframes blinks {
+        50% {
+            opacity: 0;
+        }
+    }
+    #tbl .blink_me {
+        animation: blinker 1s linear infinite;
+        color: #FF0000;
+    }
+    @keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+    @-webkit-keyframes argh-my-eyes {
+        0% {
+            background-color: #FF0000;
+        }
+        49% {
+            background-color: #FF0000;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #FF0000;
+        }
+    }
+    @-moz-keyframes argh-my-eyes {
+        0% {
+            background-color: #FF0000;
+        }
+        49% {
+            background-color: #FF0000;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #FF0000;
+        }
+    }
+    @keyframes argh-my-eyes {
+        0% {
+            background-color: #FF0000;
+        }
+        49% {
+            background-color: #FF0000;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #FF0000;
+        }
+    }
+    #tbl td.bg-blink-red {
+        -webkit-animation: argh-my-eyes 1s linear infinite;
+        -moz-animation: argh-my-eyes 1s linear infinite;
+        animation: argh-my-eyes 1s linear infinite;
+    }
+    @-webkit-keyframes argh-my-eyes-green {
+        0% {
+            background-color: #009900;
+        }
+        49% {
+            background-color: #009900;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #009900;
+        }
+    }
+    @-moz-keyframes argh-my-eyes-green {
+        0% {
+            background-color: #009900;
+        }
+        49% {
+            background-color: #009900;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #009900;
+        }
+    }
+    @keyframes argh-my-eyes-green {
+        0% {
+            background-color: #009900;
+        }
+        49% {
+            background-color: #009900;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #009900;
+        }
+    }
+    #tbl td.bg-blink-green-green {
+        -webkit-animation: argh-my-eyes-green 1s linear infinite;
+        -moz-animation: argh-my-eyes-green 1s linear infinite;
+        animation: argh-my-eyes-green 1s linear infinite;
+    }
+    /* Table Standard cells size */
+    
+    #tbl table thead tr th.size-one {
+        width: 12%;
+    }
+    #tbl table thead tr th.size-two {
+        width: 15%;
+    }
+    #tbl .table tbody tr {
+        background-color: #ffffff;
+    }
+    #tbl table tbody tr th {
+        font-size: 12px;
+        font-weight: 500;
+        color: #000000;
+        width: 5% !important;
+    }
+    #tbl table tbody td {
+        font-size: 12px;
+        padding: 8px;
+        line-height: 20px;
+        color: #55595d;
+        font-weight: 600;
+    }
+    /* Table Thumbnail photo */
+    
+    #tbl table tbody.thum-photo td {
+        font-size: 12px;
+        padding: 20px 8px;
+        line-height: 20px;
+        color: #55595d;
+        font-weight: 600;
+    }
+    /* Table Check box  begin */
+    
+    #tbl .chkbox {
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+    }
+    /* Table radio box begin */
+    
+    #tbl .rdobox {
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+    }
+    #tbl .checkbox,
+    #tbl .radio {
+        position: relative;
+        display: block;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    #tbl .checkbox label,
+    #tbl .radio label {
+        min-height: 14px;
+        padding-left: 0px;
+        margin-bottom: 0;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+    }
+    #tbl .btn-group-xs>.btn,
+    #tbl .btn-xs {
+        padding: 1px 5px;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 3px;
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+        font-family: 'Open Sans', sans-serif;
+    }
+    /* Table Page footer part */
+    
+    #tbl .page-footer {
+        background-color: #ffffff;
+    }
+    /* Pagination css */
+    
+    #tbl .pagination {
+        display: inline-block;
+        padding-left: 0;
+        margin: 10px 0px 7px;
+        padding: 2px 0;
+        border-radius: 0px;
+    }
+    /* Pager CSS */
+    
+    #tbl .pager {
+        padding-left: 0;
+        margin: 10px 0;
+        padding: 2px 0;
+        text-align: center;
+        list-style: none;
+    }
+    #tbl .pager li a,
+    #tbl .pagination > li > a {
+        color: #55595d;
+        border-color: #cccccc;
+    }
+    /* Pager Hover */
+    
+    #tbl .pager li a:hover,
+    #tbl .pagination > li > a:hover {
+        color: #55595d;
+        border-color: #cccccc;
+    }
+    #tbl .pagination > li.active > a {
+        color: #000000;
+        background-color: #eaeaea;
+    }
+      /* Force table to not be like tables anymore */
+    #tbl .no-more-tables table, 
+    #tbl .no-more-tables thead, 
+    #tbl .no-more-tables tbody, 
+    #tbl .no-more-tables th, 
+    #tbl .no-more-tables td, 
+    #tbl .no-more-tables tr { 
+        display: block; 
+    }
+ 
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #tbl .no-more-tables thead tr { 
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+ 
+    #tbl .no-more-tables tr { border: 1px solid #ccc; }
+ 
+    #tbl .no-more-tables td { 
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee; 
+        position: relative;
+        padding-left: 50% !important; 
+        white-space: normal;
+        text-align:left;
+    }
+ 
+    #tbl .no-more-tables td:before { 
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%; 
+        padding-right: 10px; 
+        white-space: nowrap;
+        text-align:left;
+        font-weight: bold;
+    }
+ 
+    /*
+    Label the data
+    */
+    #tbl .no-more-tables td:before { content: attr(data-title); }
+}
+}
+/* Smartphones (landscape) --  --  --  --  -- - */
+
+@media screen and (min-width: 321px) {
+    /* Styles */
+}
+/* Smartphones (portrait) --  --  --  --  -- - */
+
+@media screen and (max-width: 320px) {
+    /* Styles */
+}
+/* iPads (portrait and landscape) --  --  --  --  -- - */
+
+@media screen and (min-width: 668px) and (max-width: 1223px) {
+    /* Styles */
+    /* Table thead background */
+    
+    #tbl .tbl-one table thead tr {
+        background-color: #011627;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #ffffff;
+    }
+    #tbl .tbl-two table thead tr {
+        background-color: #2EC4B6;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #ffffff;
+    }
+    #tbl .tbl-three table thead tr {
+        background-color: #E71D36;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #ffffff;
+    }
+    #tbl .tbl-four table thead tr {
+        background-color: #FF9F1C;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #ffffff;
+    }
+    /* Table Standard cells */
+    
+    #tbl .table-bordered>thead>tr>td,
+    #tbl .table-bordered>thead>tr>th {
+        border-bottom-width: 0px;
+        font-weight: 600;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        padding: 14px 10px;
+        font-family: 'Open Sans', sans-serif;
+        border: transparent;
+    }
+    /* Table hyperlink */
+    
+    #tbl .table-bordered>tbody>tr>td>a {
+        color: #333333 !important;
+        text-decoration: none;
+    }
+    #tbl .table-responsive {
+        border: medium none transparent;
+    }
+    /* Table button */
+    
+    #tbl .table-bordered>tbody>tr>td>a.btn-success {
+        color: #ffffff !important;
+        text-decoration: none;
+    }
+    #tbl .table-responsive {
+        margin-bottom: 15px;
+        overflow-y: hidden;
+        width: 100%;
+    }
+    /* Table text blink */
+    
+    #tbl .blink {
+        animation: blinks 1s linear infinite;
+        color: #0000FF;
+    }
+    @keyframes blinks {
+        50% {
+            opacity: 0;
+        }
+    }
+    #tbl .blink_me {
+        animation: blinker 1s linear infinite;
+        color: #FF0000;
+    }
+    @keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+    @-webkit-keyframes argh-my-eyes {
+        0% {
+            background-color: #FF0000;
+        }
+        49% {
+            background-color: #FF0000;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #FF0000;
+        }
+    }
+    @-moz-keyframes argh-my-eyes {
+        0% {
+            background-color: #FF0000;
+        }
+        49% {
+            background-color: #FF0000;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #FF0000;
+        }
+    }
+    @keyframes argh-my-eyes {
+        0% {
+            background-color: #FF0000;
+        }
+        49% {
+            background-color: #FF0000;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #FF0000;
+        }
+    }
+    #tbl td.bg-blink-red {
+        -webkit-animation: argh-my-eyes 1s linear infinite;
+        -moz-animation: argh-my-eyes 1s linear infinite;
+        animation: argh-my-eyes 1s linear infinite;
+    }
+    @-webkit-keyframes argh-my-eyes-green {
+        0% {
+            background-color: #009900;
+        }
+        49% {
+            background-color: #009900;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #009900;
+        }
+    }
+    @-moz-keyframes argh-my-eyes-green {
+        0% {
+            background-color: #009900;
+        }
+        49% {
+            background-color: #009900;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #009900;
+        }
+    }
+    @keyframes argh-my-eyes-green {
+        0% {
+            background-color: #009900;
+        }
+        49% {
+            background-color: #009900;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #009900;
+        }
+    }
+    #tbl td.bg-blink-green-green {
+        -webkit-animation: argh-my-eyes-green 1s linear infinite;
+        -moz-animation: argh-my-eyes-green 1s linear infinite;
+        animation: argh-my-eyes-green 1s linear infinite;
+    }
+    /* Table Standard cells size */
+    
+    #tbl table thead tr th.size-one {
+        width: 12%;
+    }
+    #tbl table thead tr th.size-two {
+        width: 15%;
+    }
+    #tbl .table tbody tr {
+        background-color: #ffffff;
+    }
+    #tbl table tbody tr th {
+        font-size: 12px;
+        font-weight: 500;
+        color: #000000;
+        width: 5% !important;
+    }
+    #tbl table tbody td {
+        font-size: 12px;
+        padding: 8px;
+        line-height: 20px;
+        color: #55595d;
+        font-weight: 600;
+    }
+    /* Table Standard cells size */
+    
+    #tbl table thead tr th.size-one {
+        width: 12%;
+    }
+    #tbl table thead tr th.size-two {
+        width: 15%;
+    }
+    /* Table Thumbnail photo */
+    
+    #tbl table tbody.thum-photo td {
+        font-size: 12px;
+        padding: 20px 8px;
+        line-height: 20px;
+        color: #55595d;
+        font-weight: 600;
+    }
+    /* Table Check box  begin */
+    
+    #tbl .chkbox {
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+    }
+    /* Table radio box begin */
+    
+    #tbl .rdobox {
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+    }
+    #tbl .checkbox,
+    #tbl .radio {
+        position: relative;
+        display: block;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    #tbl .checkbox label,
+    #tbl .radio label {
+        min-height: 14px;
+        padding-left: 20px;
+        margin-bottom: 0;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+    }
+    #tbl .btn-group-xs>.btn,
+    #tbl .btn-xs {
+        padding: 1px 5px;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 3px;
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+        font-family: 'Open Sans', sans-serif;
+    }
+    /* Table Page footer part */
+    
+    #tbl .page-footer {
+        background-color: #ffffff;
+    }
+    /* Pagination css */
+    
+    #tbl .pagination {
+        display: inline-block;
+        padding-left: 0;
+        margin: 10px 0px 7px;
+        padding: 2px 0;
+        border-radius: 0px;
+    }
+    /* Pager CSS */
+    
+    #tbl .pager {
+        padding-left: 0;
+        margin: 10px 0;
+        padding: 2px 0;
+        text-align: center;
+        list-style: none;
+    }
+    #tbl .pager li a,
+    #tbl .pagination > li > a {
+        color: #55595d;
+        border-color: #cccccc;
+    }
+    /* Pager Hover */
+    
+    #tbl .pager li a:hover,
+    #tbl .pagination > li > a:hover {
+        color: #55595d;
+        border-color: #cccccc;
+    }
+    #tbl .pagination > li.active > a {
+        color: #000000;
+        background-color: #eaeaea;
+    }
+    /* Table Page footer part */
+    
+    #tbl .page-footer {
+        background-color: #ffffff;
+        margin-top: 10px;
+    }
+    .table-responsive > .table > tbody > tr > td,
+    .table-responsive > .table > tbody > tr > th,
+    .table-responsive > .table > tfoot > tr > td,
+    .table-responsive > .table > tfoot > tr > th,
+    .table-responsive > .table > thead > tr > td,
+    .table-responsive > .table > thead > tr > th {
+        white-space: nowrap;
+    }
+}
+/* iPads (landscape) --  --  --  --  -- - */
+
+@media and (min-width: 668px) and (max-width: 1223px) and (orientation: landscape) {
+    /* Styles */
+}
+/* iPads (portrait) --  --  --  --  -- - */
+
+@media screen and (min-width: 668px) and (max-width: 1223px) and (orientation: portrait) {
+    /* Styles */
+}
+/* Desktops and laptops --  --  --  --  -- - */
+
+@media screen and (min-width: 1224px) {
+    /* Styles */
+    /* Table thead background */
+    
+    #tbl .tbl-one table thead tr {
+        background-color: #011627;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #ffffff;
+    }
+    #tbl .tbl-two table thead tr {
+        background-color: #2EC4B6;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #ffffff;
+    }
+    #tbl .tbl-three table thead tr {
+        background-color: #E71D36;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #ffffff;
+    }
+    #tbl .tbl-four table thead tr {
+        background-color: #FF9F1C;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        color: #ffffff;
+    }
+    /* Table Standard cells */
+    
+    #tbl .table-bordered>thead>tr>td,
+    #tbl .table-bordered>thead>tr>th {
+        border-bottom-width: 0px;
+        font-weight: 600;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        padding: 14px 10px;
+        font-family: 'Open Sans', sans-serif;
+        border: transparent;
+    }
+    /* Table hyperlink */
+    
+    #tbl .table-bordered>tbody>tr>td>a {
+        color: #333333 !important;
+        text-decoration: none;
+    }
+    /* Table button */
+    
+    #tbl .table-bordered>tbody>tr>td>a.btn-success {
+        color: #ffffff !important;
+        text-decoration: none;
+    }
+    /* Table text blink */
+    
+    #tbl .blink {
+        animation: blinks 1s linear infinite;
+        color: #0000FF;
+    }
+    @keyframes blinks {
+        50% {
+            opacity: 0;
+        }
+    }
+    #tbl .blink_me {
+        animation: blinker 1s linear infinite;
+        color: #FF0000;
+    }
+    @keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+    @-webkit-keyframes argh-my-eyes {
+        0% {
+            background-color: #FF0000;
+        }
+        49% {
+            background-color: #FF0000;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #FF0000;
+        }
+    }
+    @-moz-keyframes argh-my-eyes {
+        0% {
+            background-color: #FF0000;
+        }
+        49% {
+            background-color: #FF0000;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #FF0000;
+        }
+    }
+    @keyframes argh-my-eyes {
+        0% {
+            background-color: #FF0000;
+        }
+        49% {
+            background-color: #FF0000;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #FF0000;
+        }
+    }
+    #tbl td.bg-blink-red {
+        -webkit-animation: argh-my-eyes 1s linear infinite;
+        -moz-animation: argh-my-eyes 1s linear infinite;
+        animation: argh-my-eyes 1s linear infinite;
+    }
+    @-webkit-keyframes argh-my-eyes-green {
+        0% {
+            background-color: #009900;
+        }
+        49% {
+            background-color: #009900;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #009900;
+        }
+    }
+    @-moz-keyframes argh-my-eyes-green {
+        0% {
+            background-color: #009900;
+        }
+        49% {
+            background-color: #009900;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #009900;
+        }
+    }
+    @keyframes argh-my-eyes-green {
+        0% {
+            background-color: #009900;
+        }
+        49% {
+            background-color: #009900;
+        }
+        50% {
+            background-color: #FFFFFF;
+        }
+        99% {
+            background-color: #FFFFFF;
+        }
+        100% {
+            background-color: #009900;
+        }
+    }
+    #tbl td.bg-blink-green-green {
+        -webkit-animation: argh-my-eyes-green 1s linear infinite;
+        -moz-animation: argh-my-eyes-green 1s linear infinite;
+        animation: argh-my-eyes-green 1s linear infinite;
+    }
+    /* Table Standard cells size */
+    
+    #tbl table thead tr th.size-one {
+        width: 12%;
+    }
+    #tbl table thead tr th.size-two {
+        width: 15%;
+    }
+    #tbl .table tbody tr {
+        background-color: #ffffff;
+    }
+    #tbl table tbody tr th {
+        font-size: 12px;
+        font-weight: 500;
+        color: #000000;
+        width: 5% !important;
+    }
+    #tbl table tbody td {
+        font-size: 13px;
+        padding: 8px;
+        line-height: 20px;
+        color: #55595d;
+        font-weight: 600;
+    }
+    /* Table Thumbnail photo */
+    
+    #tbl table tbody.thum-photo td {
+        font-size: 13px;
+        padding: 20px 8px;
+        line-height: 20px;
+        color: #55595d;
+        font-weight: 600;
+    }
+    /* Table Check box  begin */
+    
+    #tbl .chkbox {
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+    }
+    /* Table radio box begin */
+    
+    #tbl .rdobox {
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+    }
+    #tbl .checkbox,
+    #tbl .radio {
+        position: relative;
+        display: block;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    #tbl .checkbox label,
+    #tbl .radio label {
+        min-height: 14px;
+        padding-left: 20px;
+        margin-bottom: 0;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: 'Open Sans', sans-serif;
+    }
+    #tbl .btn-group-xs>.btn,
+    #tbl .btn-xs {
+        padding: 1px 5px;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 3px;
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+        font-family: 'Open Sans', sans-serif;
+    }
+    /* Table Page footer part */
+    
+    #tbl .page-footer {
+        background-color: #ffffff;
+    }
+    /* Pagination css */
+    
+    #tbl .pagination {
+        display: inline-block;
+        padding-left: 0;
+        margin: 10px 0px 7px;
+        padding: 2px 0;
+        border-radius: 0px;
+    }
+    /* Pager CSS */
+    
+    #tbl .pager {
+        padding-left: 0;
+        margin: 10px 0;
+        padding: 2px 0;
+        text-align: center;
+        list-style: none;
+    }
+    #tbl .pager li a,
+    #tbl .pagination > li > a {
+        color: #55595d;
+        border-color: #cccccc;
+    }
+    /* Pager Hover */
+    
+    #tbl .pager li a:hover,
+    #tbl .pagination > li > a:hover {
+        color: #55595d;
+        border-color: #cccccc;
+    }
+    #tbl .pagination > li.active > a {
+        color: #000000;
+        background-color: #eaeaea;
+    }
+    /* Table Page footer part */
+    
+    #tbl .page-footer {
+        background-color: #ffffff;
+        margin-top: 10px;
+    }
+    /* Table Page footer part */
+    
+    #tbl .page-footer.tab-bg {
+        background-color: transparent !important;
+    }
+}
+/* Large screens --  --  --  --  -- - */
+
+@media screen and (min-width: 1824px) {
+    /* Styles */
+}
+/* Background .demo CSS, it is only genral purpose only */
+
+.demo {
+    background: #696969;
+    background-repeat: repeat;
+    font-family: 'Open Sans', sans-serif;
+}
+h3 {
+    color: #f0f0f0;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-family: 'Open Sans', sans-serif;
+}
+/*hr {
+    border-top: 1px solid #8c8a8a;
+}*/
+#tbl table {
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 10px;
+}
+#tbl .table-bordered.bor-bot>tbody>tr>th,
+#tbl .table-bordered.bor-bot>tbody>tr>td {
+    border-bottom: 1px solid #ddd !important;
+    border: transparent;
+}
+#tbl .table-bordered.bor-bot>tbody>tr:hover {
+    background-color: #fdfdfd;
+    background-image: -moz-linear-gradient(top, #fdfdfd, #eeeeee);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdfdfd), to(#eeeeee));
+    background-image: -webkit-linear-gradient(top, #fdfdfd, #eeeeee);
+    background-image: -o-linear-gradient(top, #fdfdfd, #eeeeee);
+    background-image: linear-gradient(to bottom, #fdfdfd, #eeeeee);
+}
+#tbl .table-bordered.one-color thead {
+    border: 1px solid #011627;
+}
+#tbl .table-bordered.two-color thead {
+    border: 1px solid #2EC4B6;
+}
+#tbl .table-bordered.three-color thead {
+    border: 1px solid #E71D36;
+}
+#tbl .table-bordered.four-color thead {
+    border: 1px solid #FF9F1C;
+}
+#tbl .table tbody tr.bg-color-one {
+    background: #e2eff5 !important;
+}
+#tbl .table tbody tr.bg-color-two {
+    background: #efeee6 !important;
+}
+#tbl .table tbody tr.bg-color-three {
+    background: #ccf5cc !important;
+}
+#tbl .table tbody tr.bg-color-four {
+    background: #d6d6fb !important;
+}
+#tbl .table tbody tr.bg-color-five {
+    background: #d7eae8 !important;
+}
+#tbl .table tbody tr.bg-color-six {
+    background: #f2dbf9 !important;
+}
+#tbl input[type=radio],
+#tbl input[type=checkbox] {
+    display: none;
+}
+#tbl input[type=radio] + label:before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+    margin-right: 8px;
+    background-color: #aaa;
+    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, .3);
+    border-radius: 8px;
+}
+#tbl input[type=checkbox] + label:before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+    margin-right: 8px;
+    background-color: #aaa;
+    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, .3);
+    border-radius: 4px;
+}
+#tbl input[type=radio]:checked + label:before {
+    content: "\2022";
+    color: white;
+    background-color: #666;
+    font-size: 1.8em;
+    text-align: center;
+    line-height: 14px;
+    text-shadow: 0px 0px 3px #eee;
+}
+#tbl input[type=checkbox]:checked + label:before {
+    content: "\2714";
+    color: white;
+    background-color: #666;
+    text-align: center;
+    line-height: 15px;
+    text-shadow: 0px 0px 3px #eee;
+}
+#tbl .img-thumb {
+    width: 100%;
+    border-radius: 50%;
+    height: auto;
+    border: 1px solid #ccc;
+}
+/* Table Page footer part */
+
+#tbl .page-footer.tab-bg {
+    background-color: transparent !important;
+}

@@ -4,9 +4,9 @@
 
 from django.contrib.auth.models import  Group
 from area2076.models import User
-from api.models import Task
+from api.models import Task, Policy
 from rest_framework import viewsets
-from api.serializers import UserSerializer, GroupSerializer, TaskSerializer
+from api.serializers import UserSerializer, GroupSerializer, TaskSerializer, PolicySerializer
 from url_filter.integrations.drf import DjangoFilterBackend
 
 
@@ -46,3 +46,13 @@ class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer   
     filter_backends = [DjangoFilterBackend]
     filter_fields = ['id', 'user_id' ] 
+
+class PolicyViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows Tasks to be viewed or edited.
+    """
+    queryset = Policy.objects.all()
+    serializer_class = PolicySerializer   
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ['id', 'client_id' ] 
+

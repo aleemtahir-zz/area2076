@@ -9,7 +9,7 @@ def index(request):
     default_user = User.objects.get(id=1)
     context = {'user': default_user}
 
-    return render(request, 'area2076/index.html', context)
+    return render(request, 'area2076/index2.html', context)
    
 
 def profile(request):  

@@ -38,12 +38,14 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 class User(AbstractBaseUser, PermissionsMixin, MPTTModel):
+    CLIENT = 'C'
     REPRESENTATIVE = 'SR'
     OFFICER = 'SO'
     MANAGER = 'SM'
     AREA_MANAGER = 'AM'
 
     EMPLOYEE_TYPES = (
+        (CLIENT, 'client'),
         (REPRESENTATIVE, 'sales representative'),
         (OFFICER, 'sales officer'),
         (MANAGER, 'sales manager'),
@@ -51,8 +53,8 @@ class User(AbstractBaseUser, PermissionsMixin, MPTTModel):
     )
 
     email = models.EmailField(_('email address'), null=True)
-    first_name = models.CharField(_('first name'), max_length=30, blank=True, null=True)
-    last_name = models.CharField(_('last name'), max_length=30, blank=True, null=True)
+    name = models.CharField(_('name'), max_length=30, blank=True, null=True)
+    contact = models.CharField(_('contact'), max_length=30, blank=True, null=True)
     code = models.IntegerField(blank=True, null=True, unique=True)
     role = models.CharField(max_length=25, choices=EMPLOYEE_TYPES, null=True)
     date_joined = models.DateField(_('date joined'), auto_now_add=False, null=True)
@@ -77,14 +79,14 @@ class User(AbstractBaseUser, PermissionsMixin, MPTTModel):
         '''
         Returns the first_name plus the last_name, with a space in between.
         '''
-        full_name = '%s %s' % (self.first_name, self.last_name)
+        full_name = '%s %s' % (self.name)
         return full_name.strip()
 
     def get_short_name(self):
         '''
         Returns the short name for the user.
         '''
-        return self.first_name
+        return self.name
 
     def email_adduser(self, subject, message, from_email=None, **kwargs):
         '''
