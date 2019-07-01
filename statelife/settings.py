@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'area2076',
+    # 'area2076',
     'api',
 ]
 
@@ -139,4 +139,4 @@ REST_FRAMEWORK = {
 }
 
 LOGIN_REDIRECT_URL = '/profile'
-AUTH_USER_MODEL = 'area2076.User'
+AUTH_USER_MODEL = 'api.User'

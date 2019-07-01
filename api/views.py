@@ -3,7 +3,7 @@
 # Create your views here.
 
 from django.contrib.auth.models import  Group
-from area2076.models import User
+from api.models import User
 from api.models import Task
 from rest_framework import viewsets
 from api.serializers import UserSerializer, GroupSerializer, TaskSerializer

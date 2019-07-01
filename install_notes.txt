@@ -1,6 +1,17 @@
+# Create a virtual environment to isolate our package dependencies locally
+python3 -m venv env
+source env/bin/activate  # On Windows use `env\Scripts\activate`
+
+pip install django
+pip install djangorestframework
+
+
 *For filtering API - used in API Views
 pip install django-url-filter
 
 *For Tree like structure in User Model
 pip install django django-mptt
 https://stackabuse.com/modified-preorder-tree-traversal-in-django/
+
+
+python manage.py migrate
