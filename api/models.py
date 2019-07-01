@@ -53,6 +53,7 @@ class User(AbstractBaseUser, PermissionsMixin, MPTTModel):
     first_name = models.CharField(_('first name'), max_length=30, blank=True, null=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True, null=True)
     code = models.IntegerField(blank=True, null=True, unique=True)
+    cell = models.CharField(blank=True, null=True, max_length=15)
     role = models.CharField(max_length=25, choices=EMPLOYEE_TYPES, null=True)
     date_joined = models.DateField(_('date joined'), auto_now_add=False, null=True)
     date_expire = models.DateField(_('date expire'), auto_now_add=False, null=True)
